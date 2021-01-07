@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <h1>头条发布系统</h1>
     <router-view/>
   </div>
 </template>
 
 <script>
+// import { Button } from 'element-ui'
+// import Vue from 'vue'
+
+// Vue.component(Button.name, Button)
+
 export default {
-  name: 'app'
+  name: 'App'
 }
 </script>
 
