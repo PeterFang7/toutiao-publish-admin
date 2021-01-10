@@ -1,5 +1,6 @@
 <template>
     <el-menu
+      :collapse="iscollapse"
       default-active="/"
       background-color="#002033"
       text-color="#fff"
@@ -46,9 +47,16 @@ Vue.use(Menu).use(Submenu).use(MenuItem).use(MenuItemGroup)
 export default {
   name: 'AppAside',
   components: {},
-  props: {},
+  props: {
+    iscollapse: {
+      type: Boolean,
+      befault: true
+    }
+  },
   data () {
-    return {}
+    return {
+      // isCollapse: true
+    }
   },
   computed: {},
   watch: {},

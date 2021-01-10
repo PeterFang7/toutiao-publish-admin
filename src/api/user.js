@@ -15,11 +15,12 @@ export const login = (data) => {
 
 // 获取用户信息
 export const getUserMessage = (data) => {
+  // const user = JSON.parse(window.localStorage.getItem('user')) // 将JSON数据还原成对象
   return request({
     method: 'GET',
-    url: '/mp/v1_0/user/profile',
-    headers: {
-      Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDE0MzI2NjgsInVzZXJfaWQiOjEsInJlZnJlc2giOmZhbHNlLCJ2ZXJpZmllZCI6dHJ1ZX0.T8HyJNL1SgHkmH44Q6TXRtp1FU99GdPeUh4FVSbQJrE'
-    }
+    url: '/mp/v1_0/user/profile'
+    // headers: {
+    //   Authorization: `Bearer ${user.token}`
+    // }
   })
 }

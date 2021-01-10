@@ -1,12 +1,12 @@
 <template>
 <el-container class="loyout-container">
-  <el-aside width="200px" >
-    <app-aside class="aside-container"/>
+  <el-aside width="auto" >
+    <app-aside class="aside-container" :iscollapse="isCollapse" />
   </el-aside>
   <el-container>
     <el-header class="header" style="height: 50px;">
-      <app-header :myimg='user.photo' :myname='user.name'/>
-    </el-header>
+      <app-header :myimg='user.photo' :myname='user.name' @clickIcon="onclick" :myisCollapse="isCollapse" />
+    </el-header >
     <el-main>
         <router-view />
     </el-main>
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import { Container, Aside, Header, Main } from 'element-ui'
-import Vue from 'vue'
+// import { Container, Aside, Header, Main } from 'element-ui'
+// import Vue from 'vue'
 import AppAside from './components/aside'
 import AppHeader from './components/header'
 import { getUserMessage } from '@/api/user'
-Vue.use(Container).use(Aside).use(Header).use(Main)
+// Vue.use(Container).use(Aside).use(Header).use(Main)
 export default {
   name: 'LoyoutIndex',
   components: {
@@ -30,7 +30,8 @@ export default {
   props: {},
   data () {
     return {
-      user: {}
+      user: {},
+      isCollapse: false
     }
   },
   computed: {},
@@ -43,7 +44,11 @@ export default {
     lodUserMessage () {
       getUserMessage().then(res => {
         this.user = res.data.data
+        console.log(this.user)
       })
+    },
+    onclick () {
+      this.isCollapse = !this.isCollapse
     }
   }
 }

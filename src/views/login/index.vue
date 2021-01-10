@@ -83,6 +83,7 @@ export default {
         this.loginLoading = true // 改变登录按钮状态
         login(this.user).then(res => {
           console.log(res)
+          window.localStorage.setItem('user', JSON.stringify(res.data.data)) // 将登录信息转换为JSON数据并存储到本地
           // 登录成功
           this.$message({
             message: '登录成功!',

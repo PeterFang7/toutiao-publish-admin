@@ -3,9 +3,12 @@ import VueRouter from 'vue-router'
 import Login from '@/views/login'
 import Home from '@/views/Home'
 import Layout from '@/views/Layout'
+import Article from '@/views/Article'
+import Image from '@/views/Image'
 
 Vue.use(VueRouter)
 
+// 路由表
 const routes = [
   {
     path: '/login',
@@ -20,6 +23,16 @@ const routes = [
         path: '',
         name: 'Home',
         component: Home
+      },
+      {
+        path: '/article',
+        name: 'Article',
+        component: Article
+      },
+      {
+        path: '/image',
+        name: 'Image',
+        component: Image
       }
     ]
   }
@@ -41,6 +54,23 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+// 路由拦击
+router.beforeEach((to, from, next) => {
+  const user = JSON.parse(window.localStorage.getItem('user'))
+  // 判断是否是login登录页
+  if (to.path !== '/login') {
+    // 判断本地存储user是否存在
+    if (user) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    // 放行login
+    next()
+  }
 })
 
 export default router
