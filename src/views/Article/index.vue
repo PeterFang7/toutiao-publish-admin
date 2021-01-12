@@ -87,7 +87,6 @@
             <el-tag v-else-if="scope.row.status === 3" >审核失败</el-tag>
             <el-tag v-else-if="scope.row.status === 4" >已删除</el-tag> -->
              <el-tag :type="articleStatus[scope.row.status].type" >{{ articleStatus[scope.row.status].text }}</el-tag>
-             {{ scope.row.status }}
           </template>
         </el-table-column>
          <el-table-column
@@ -104,6 +103,7 @@
               circle
               type="primary"
               icon="el-icon-edit"
+              @click="$router.push('/publish?id=' + scope.row.id)"
               ></el-button>
             <el-button
               size="small"

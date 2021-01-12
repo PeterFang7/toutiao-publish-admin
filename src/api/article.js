@@ -24,3 +24,36 @@ export const removeArticle = articleId => {
     url: `/mp/v1_0/articles/${articleId}`
   })
 }
+
+// 添加文章
+export const addArticle = (data, draft = false) => {
+  console.log(draft)
+  return request({
+    method: 'POST',
+    url: '/mp/v1_0/articles',
+    params: {
+      draft: draft // 是否为草稿（true为草稿）
+    },
+    data
+  })
+}
+
+// 获取指定文章
+export const getArticleData = (articleId) => {
+  return request({
+    method: 'GET',
+    url: `/mp/v1_0/articles/${articleId}`
+  })
+}
+
+// 修改文章
+export const updataArticle = (articleId, data, draft = false) => {
+  return request({
+    method: 'PUT',
+    url: `/mp/v1_0/articles/${articleId}`,
+    params: {
+      draft: draft // 是否为草稿（true为草稿）
+    },
+    data
+  })
+}
